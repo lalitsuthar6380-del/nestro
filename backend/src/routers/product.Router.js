@@ -5,6 +5,7 @@ const router = express.Router();
 import {
     read,
     readById,
+    readBySlug,
     create,
     deleteById,
     updateStatus,
@@ -25,6 +26,7 @@ import { authorized, protect } from "../middleware/auth.js";
 router.get("/", read);
 
 // Get product by ID
+router.get("/slug/:slug", readBySlug);
 router.get("/:id", readById);
 
 

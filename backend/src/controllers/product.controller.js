@@ -120,6 +120,23 @@ export const readById = async (req, res) => {
     }
 };
 
+export const readBySlug = async (req, res) => {
+    try {
+        const product = await ProductModel.findOne({ slug: req.params.slug });
+
+        if (!product)
+            return sendNotFound(res);
+
+        res.status(200).json({
+            success: true,
+            message: "Product found",
+            data: product
+        });
+    } catch (error) {
+        sendServerError(res);
+    }
+};
+
 
 export const create = async (req, res) => {
     try {
